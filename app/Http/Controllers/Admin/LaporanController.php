@@ -71,26 +71,34 @@ class LaporanController extends Controller
         //
     }
 
-    public function cetakBulanan(Request $request)
+    public function cetakLaporan(Request $request)
     {
-        $data = User::where('users.role', '!=', 'admin')
-            ->with('presensi', 'biodata')->get();
+        if ($request->jenis == 'bulanan') {
+
+            $data = User::where('users.role', '!=', 'admin')
+                ->with('presensi', 'biodata')->get();
 
 
-        if (count($data) < 1) {
-            Alert::error('Data tidak ditemukan');
-            return redirect()->back();
+            if (count($data) < 1) {
+                Alert::error('Data tidak ditemukan');
+                return redirect()->back();
+            }
+            $days = count($data[0]->presensi);
+            $bulan = date('Y-') . $request->waktu;
+
+            $pdf = Pdf::loadview('admin.report.cetak-bulanan', [
+                'data' => $data,
+                'days' => $days,
+                'bulan' => $bulan
+            ])->setPaper('A4', 'landscape');
+            return $pdf->stream();
+        } else {
+            $data = Presensi::with('user')->where('tanggal', $request->waktu)->get();
+            $pdf = Pdf::loadview('admin.report.cetak-harian', [
+                'data' => $data,
+                'waktu' => $request->waktu
+            ])->setPaper('A4', 'portrait');
+            return $pdf->stream();
         }
-        $days = count($data[0]->presensi);
-        $bulan = date('Y-') . $request->bulan;
-
-        $pdf = Pdf::loadview('admin.report.cetak-bulanan', [
-            'data' => $data,
-            'days' => $days,
-            'bulan' => $bulan
-        ])->setPaper('A4', 'landscape');
-        return $pdf->stream();
-
-        // return view('admin.report.cetak-bulanan', compact('days', 'data'));
     }
 }

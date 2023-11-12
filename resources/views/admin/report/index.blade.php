@@ -8,25 +8,18 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ url('admin/laporan/cetak/bulan') }}" method="post">
+            <form action="{{ url('admin/presensi/cetak') }}" method="post">
                 @csrf
                 <div class="row">
-                    <div class="col-10">
-                        <select name="bulan" id="bulan" class="form-control float-right" required>
-                            <option selected disabled>Pilih Bulan</option>
-                            <option value="01">Januari</option>
-                            <option value="02">Februari</option>
-                            <option value="03">Maret</option>
-                            <option value="04">April</option>
-                            <option value="05">Mei</option>
-                            <option value="06">Juni</option>
-                            <option value="07">Juli</option>
-                            <option value="08">Agustus</option>
-                            <option value="09">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
+                    <div class="col-5">
+                        <select name="jenis" id="jenis" class="form-control float-right" onchange="changeJenis()"
+                            required>
+                            <option value="harian">Laporan Harian</option>
+                            <option value="bulanan">Laporan Bulanan</option>
                         </select>
+                    </div>
+                    <div class="col-5" id="col-waktu">
+                        <input type="date" name="waktu" id="waktu" class="form-control">
                     </div>
                     <div class="col-2">
                         <button type="submit" class="btn btn-warning w-100"><i class="fa fa-print"></i>
@@ -117,5 +110,37 @@
                 "responsive": true,
             });
         });
+
+        const changeJenis = () => {
+            hapsuForm()
+            const jenis = $("#jenis").val();
+            if (jenis == 'bulanan') {
+                $("#col-waktu").append(`
+                <select name="waktu" id="waktu" class="form-control float-right" required>
+                    <option selected disabled>Pilih Bulan</option>
+                    <option value="01">Januari</option>
+                    <option value="02">Februari</option>
+                    <option value="03">Maret</option>
+                    <option value="04">April</option>
+                    <option value="05">Mei</option>
+                    <option value="06">Juni</option>
+                    <option value="07">Juli</option>
+                    <option value="08">Agustus</option>
+                    <option value="09">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                </select>
+            `);
+            } else {
+                $("#col-waktu").append(`
+                 <input type="date" name="waktu" id="waktu" class="form-control">
+                `);
+            }
+        };
+
+        const hapsuForm = async () => {
+            $("#waktu").remove();
+        }
     </script>
 @stop

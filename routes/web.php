@@ -34,8 +34,8 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('pegawai', PegawaiController::class);
             Route::resource('lokasi', LokasiController::class);
         });
-        Route::resource('laporan', LaporanController::class);
-        Route::post('laporan/cetak/bulan', [LaporanController::class, 'cetakBulanan']);
+        Route::resource('presensi', LaporanController::class);
+        Route::post('presensi/cetak', [LaporanController::class, 'cetakLaporan']);
     });
     Route::prefix('pegawai')->group(function () {
         Route::get('apel-pagi', [ApelPagiController::class, 'index']);

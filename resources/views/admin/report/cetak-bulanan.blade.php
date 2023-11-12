@@ -64,13 +64,15 @@
                     </td>
                     @foreach ($item->presensi as $a)
                         @if ($a->periode === $bulan)
-                            <td class="text-center">
-                                @if (isset($a->apelPagi->waktu))
+                            @if (isset($a->apelPagi->waktu))
+                                <td class="text-center">
                                     H
-                                @else
+                                </td>
+                            @else
+                                <td class="text-center bg-danger">
                                     TK
-                                @endif
-                            </td>
+                                </td>
+                            @endif
                         @endif
                     @endforeach
                 </tr>

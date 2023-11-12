@@ -316,10 +316,10 @@ return [
             ],
         ],
         [
-            'text' => 'Laporan',
-            'url'  => 'admin/laporan',
+            'text' => 'Presensi',
             'icon' => 'fas fa-fw fa-copy',
             'can'  => 'isAdmin',
+            'url'  => 'admin/presensi'
         ],
         [
             'text'    => 'Presensi',
