@@ -16,6 +16,7 @@
 
 <body>
     <div class="text-center " style="width: 100%">
+        <img src="{{ public_path('img/logo.png') }}" alt="" width="45px" class="float-left">
         <span style="font-size: 0.7em">
             PEMERINTAH KOTA GORONTALO <br>
             DINAS PERHUBUNGAN
