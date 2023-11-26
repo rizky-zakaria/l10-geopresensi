@@ -89,11 +89,23 @@
                     <td>{{ $item->user->biodata->jk }}</td>
                     <td>{{ $item->apelPagi->waktu }}</td>
                     <td>H</td>
-                    <td>{{ $item->dalamRuangan->waktu }}</td>
+                    <td>
+                        @isset($item->dalamRuangan->waktu)
+                            {{ $item->dalamRuangan->waktu }}
+                        @endisset
+                    </td>
                     <td>H</td>
-                    <td>{{ $item->setelahIshoma->waktu }}</td>
+                    <td>
+                        @isset($item->setelahIshoma->waktu)
+                            {{ $item->setelahIshoma->waktu }}
+                        @endisset
+                    </td>
                     <td>H</td>
-                    <td>{{ $item->apelSore->waktu }}</td>
+                    <td>
+                        @isset($item->apelSore->waktu)
+                            {{ $item->apelSore->waktu }}
+                        @endisset
+                    </td>
                     <td>H</td>
                     <td>Hadir</td>
                 </tr>

@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                {{ $item->presensi->user->name }}
+                                {{ $item->presensi->user->biodata->name }}
                             </td>
                             <td>{{ $item->presensi->keterangan }}</td>
                             <td class="text-center">

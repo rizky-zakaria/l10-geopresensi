@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Biodata;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $data = User::where('role', 'pegawai')
-            ->orderBy('name', 'desc')->get();
+        $data = User::with('biodata')->where('role', 'pegawai')->get();
         return view('admin.user.index', compact('data'));
     }
 
@@ -23,7 +23,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -31,7 +31,19 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = User::create([
+            'email' => $request->email,
+            'role' => 'pegawai',
+            'password' => $request->password
+        ]);
+        Biodata::create([
+            'name' => $request->nama,
+            'jk' => $request->jk,
+            'jabatan' => $request->jabatan,
+            'user_id' => $data->id
+        ]);
+
+        return redirect(url('admin/data-master/pegawai/'));
     }
 
     /**
@@ -47,7 +59,8 @@ class PegawaiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = User::find($id);
+        return view('admin.user.edit', compact('data'));
     }
 
     /**
@@ -55,7 +68,20 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = User::whereId($id)->first();
+        $data->email = $request->email;
+        if (isset($request->password)) {
+            $data->passowrd = $request->passowrd;
+        }
+        $data->update();
+
+        $bio = Biodata::where('user_id', $id)->first();
+        $bio->jk = $request->jk;
+        $bio->jabatan = $request->jabatan;
+        $bio->name = $request->nama;
+        $bio->update();
+
+        return redirect(url('admin/data-master/pegawai/'));
     }
 
     /**
@@ -63,6 +89,10 @@ class PegawaiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bio = Biodata::where('user_id', $id)->first();
+        $bio->delete();
+        $user = User::find($id);
+        $user->delete();
+        return redirect(url('admin/data-master/pegawai/'));
     }
 }

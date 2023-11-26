@@ -9,14 +9,18 @@
     <div class="card">
         <div class="card-header">
             Daftar Pegawai
+            <a href="{{ route('pegawai.create') }}" class="btn btn-sm btn-primary float-right"><i
+                    class="fa fa-plus-circle"></i> Tambah</a>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Nomor</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Jabatan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -25,11 +29,26 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                {{ $item->name }}
+                                {{ $item->biodata->name }}
                             </td>
                             <td>{{ $item->email }}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                @if ($item->biodata->jk === 'L')
+                                    Pria
+                                @else
+                                    Wanita
+                                @endif
+                            </td>
+                            <td>{{ $item->biodata->jabatan }}</td>
+                            <td>
+                                <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-sm btn-success"><i
+                                        class="fas fa-edit"></i></a>
+                                <form action="{{ route('pegawai.destroy', $item->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger btn-sm" type="submit"><i
+                                            class="fa fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

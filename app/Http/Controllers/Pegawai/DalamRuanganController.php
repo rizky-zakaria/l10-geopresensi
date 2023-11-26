@@ -46,7 +46,7 @@ class DalamRuanganController extends Controller
     {
         // dishub kota = 0.5269178,123.0562128
         // dishub prov 0.5999216,123.0712941
-        $distance = getDistance(0.5550362238963897, 123.06405788370465, $request->lat, $request->long);
+        $distance = getDistance(0.5594692471015614, 123.05093640516309, $request->lat, $request->long);
         if ($distance >= 300) {
             Alert::warning('Anda terlalu jauh dari kantor!');
             return redirect()->back();
