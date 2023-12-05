@@ -9,7 +9,7 @@ class Biodata extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'jk', 'name', 'jabatan'];
+    protected $fillable = ['user_id', 'jk', 'name', 'jabatan', 'bidang'];
 
     public function user()
     {

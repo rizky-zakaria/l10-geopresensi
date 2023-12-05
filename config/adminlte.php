@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Geo</b>PRESENSI',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -310,6 +310,10 @@ return [
                     'url'  => 'admin/data-master/pegawai',
                 ],
                 [
+                    'text' => 'Data Bidang',
+                    'url'  => 'admin/data-master/bidang',
+                ],
+                [
                     'text' => 'Data Lokasi',
                     'url'  => 'admin/data-master/lokasi',
                 ],
@@ -331,16 +335,12 @@ return [
                     'url'  => 'pegawai/apel-pagi',
                 ],
                 [
-                    'text' => 'Dalam Ruangan',
-                    'url'  => 'pegawai/dalam-ruangan',
-                ],
-                [
-                    'text' => 'Setelah Ishoma',
-                    'url'  => 'pegawai/setelah-ishoma',
-                ],
-                [
                     'text' => 'Apel Sore',
                     'url'  => 'pegawai/apel-sore',
+                ],
+                [
+                    'text' => 'Tidak Hadir',
+                    'url'  => 'pegawai/sakit',
                 ],
             ],
         ]

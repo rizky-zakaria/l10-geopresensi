@@ -40,8 +40,6 @@
                         <th>Tanggal</th>
                         <th>Nama</th>
                         <th>Apel Pagi</th>
-                        <th>Dalam Ruangan</th>
-                        <th>Ishoma</th>
                         <th>Apel Sore</th>
                         <th>Keterangan</th>
                     </tr>
@@ -54,32 +52,32 @@
                                 {{ $item->user->biodata->name }}
                             </td>
                             <td class="text-center">
-                                @isset($item->apelPagi->waktu)
-                                    <img src="{{ asset($item->apelPagi->path) }}" alt="" width="100px">
-                                    <br> {{ $item->apelPagi->waktu }}
-                                @endisset
+                                @if ($item->apelPagi->waktu === '-')
+                                    -
+                                @else
+                                    @isset($item->apelPagi->waktu)
+                                        <img src="{{ asset($item->apelPagi->path) }}" alt="" width="100px">
+                                        <br> {{ $item->apelPagi->waktu }}
+                                    @endisset
+                                @endif
                             </td>
                             <td class="text-center">
-                                @isset($item->dalamRuangan->waktu)
-                                    <img src="{{ asset($item->dalamRuangan->path) }}" alt="" width="100px">
-                                    <br> {{ $item->dalamRuangan->waktu }}
-                                @endisset
-                            </td>
-                            <td class="text-center">
-                                @isset($item->setelahIshoma->waktu)
-                                    <img src="{{ asset($item->setelahIshoma->path) }}" alt="" width="100px">
-                                    <br> {{ $item->setelahIshoma->waktu }}
-                                @endisset
-                            </td>
-                            <td class="text-center">
-                                @isset($item->apelSore->waktu)
-                                    <img src="{{ asset($item->apelSore->path) }}" alt="" width="100px">
-                                    <br> {{ $item->apelSore->waktu }}
-                                @endisset
+                                @if ($item->apelSore->waktu === '-')
+                                    -
+                                @else
+                                    @isset($item->apelSore->waktu)
+                                        <img src="{{ asset($item->apelSore->path) }}" alt="" width="100px">
+                                        <br> {{ $item->apelSore->waktu }}
+                                    @endisset
+                                @endif
                             </td>
                             <td class="text-center">
                                 @isset($item->apelSore->waktu)
-                                    @if ($item->apelPagi->waktu && $item->dalamRuangan->waktu && $item->setelahIshoma->waktu && $item->apelSore->waktu)
+                                    @if ($item->apelPagi->waktu === 'sakit')
+                                        Sakit
+                                    @elseif($item->apelPagi->waktu === 'izin')
+                                        Izin
+                                    @elseif($item->apelPagi->waktu && $item->apelSore->waktu)
                                         Hadir
                                     @else
                                         Bolos

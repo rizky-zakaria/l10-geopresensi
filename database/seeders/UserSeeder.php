@@ -25,7 +25,8 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'jk' => 'L',
             'jabatan' => 'Administrator',
-            'user_id' => $admin->id
+            'user_id' => $admin->id,
+            'bidang' => 'sekretariat'
         ]);
 
         $pegawai = User::create([
@@ -38,7 +39,8 @@ class UserSeeder extends Seeder
             'name' => 'Pegawai',
             'jk' => 'L',
             'jabatan' => 'Staff IT',
-            'user_id' => $pegawai->id
+            'user_id' => $pegawai->id,
+            'bidang' => 'humas'
         ]);
     }
 }

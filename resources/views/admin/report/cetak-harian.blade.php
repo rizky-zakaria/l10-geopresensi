@@ -21,7 +21,7 @@
             PEMERINTAH KOTA GORONTALO <br>
             DINAS PERHUBUNGAN
             KOTA GORONTALO <br>
-            Jl. apa stau depe nama
+            Jl. Wolter Monginsidi No.47, Tenda, Kec. Hulonthalangi, Kota Gorontalo, Gorontalo 96133
         </span>
     </div>
     <div class="w-100 bg-dark" style="height: 0.1%"></div>
@@ -34,10 +34,11 @@
             <tr>
                 <th rowspan="3">No</th>
                 <th rowspan="3">Nama</th>
+                <th rowspan="3">Bidang</th>
                 <th rowspan="3">Jenis <br>
                     Kelamin
                 </th>
-                <th colspan="8">Tanggal</th>
+                <th colspan="4">Tanggal</th>
                 <th rowspan="3">KET</th>
             </tr>
             <tr>
@@ -45,28 +46,10 @@
                     Apel Pagi
                 </th>
                 <th colspan="2">
-                    Dalam Ruangan
-                </th>
-                <th colspan="2">
-                    Istrahat
-                </th>
-                <th colspan="2">
                     Apel Sore
                 </th>
             </tr>
             <tr>
-                <th>
-                    Jam
-                </th>
-                <th>
-                    TTD
-                </th>
-                <th>
-                    Jam
-                </th>
-                <th>
-                    TTD
-                </th>
                 <th>
                     Jam
                 </th>
@@ -86,28 +69,46 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->user->biodata->name }}</td>
+                    <td>{{ $item->user->biodata->bidang }}</td>
                     <td>{{ $item->user->biodata->jk }}</td>
-                    <td>{{ $item->apelPagi->waktu }}</td>
-                    <td>H</td>
                     <td>
-                        @isset($item->dalamRuangan->waktu)
-                            {{ $item->dalamRuangan->waktu }}
-                        @endisset
+                        {{-- @if ($item->apelPagi->waktu) --}}
+                        {{ $item->apelPagi->waktu }}
+                        {{-- @else
+                        @endif --}}
                     </td>
-                    <td>H</td>
                     <td>
-                        @isset($item->setelahIshoma->waktu)
-                            {{ $item->setelahIshoma->waktu }}
-                        @endisset
+                        @if ($item->apelPagi->waktu === 'sakit')
+                            S
+                        @elseif($item->apelPagi->waktu === 'izin')
+                            I
+                        @else
+                            H
+                        @endif
                     </td>
-                    <td>H</td>
                     <td>
                         @isset($item->apelSore->waktu)
                             {{ $item->apelSore->waktu }}
                         @endisset
                     </td>
-                    <td>H</td>
-                    <td>Hadir</td>
+                    <td>
+                        @if ($item->apelSore->waktu === 'sakit')
+                            S
+                        @elseif($item->apelSore->waktu === 'izin')
+                            I
+                        @else
+                            H
+                        @endif
+                    </td>
+                    <td>
+                        @if ($item->apelPagi->waktu === 'sakit')
+                            Sakit
+                        @elseif($item->apelPagi->waktu === 'izin')
+                            Izin
+                        @else
+                            Hadir
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>

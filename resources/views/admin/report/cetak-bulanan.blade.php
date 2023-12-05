@@ -31,6 +31,7 @@
                 <th rowspan="2">Jenis <br>
                     Kelamin
                 </th>
+                <th rowspan="2">Bidang</th>
                 <th rowspan="2">Jabatan</th>
                 <th colspan="{{ count($data[0]->presensi->where('periode', $bulan)) }}">Tanggal</th>
             </tr>
@@ -60,13 +61,22 @@
                         {{ $item->biodata->jk }}
                     </td>
                     <td>
+                        {{ $item->biodata->bidang }}
+                    </td>
+                    <td>
                         {{ $item->biodata->jabatan }}
                     </td>
                     @foreach ($item->presensi as $a)
                         @if ($a->periode === $bulan)
                             @if (isset($a->apelPagi->waktu))
                                 <td class="text-center">
-                                    H
+                                    @if ($a->apelPagi->waktu === 'sakit')
+                                        S
+                                    @elseif($a->apelPagi->waktu === 'izin')
+                                        I
+                                    @else
+                                        H
+                                    @endif
                                 </td>
                             @else
                                 <td class="text-center bg-danger">

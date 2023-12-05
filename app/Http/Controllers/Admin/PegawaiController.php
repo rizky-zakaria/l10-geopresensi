@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
 use App\Models\Biodata;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $bidang = Bidang::all();
+        return view('admin.user.create', compact('bidang'));
     }
 
     /**
@@ -40,7 +42,8 @@ class PegawaiController extends Controller
             'name' => $request->nama,
             'jk' => $request->jk,
             'jabatan' => $request->jabatan,
-            'user_id' => $data->id
+            'user_id' => $data->id,
+            'bidang' => $request->bidang
         ]);
 
         return redirect(url('admin/data-master/pegawai/'));
@@ -60,7 +63,8 @@ class PegawaiController extends Controller
     public function edit(string $id)
     {
         $data = User::find($id);
-        return view('admin.user.edit', compact('data'));
+        $bidang = Bidang::all();
+        return view('admin.user.edit', compact('data', 'bidang'));
     }
 
     /**
@@ -79,6 +83,7 @@ class PegawaiController extends Controller
         $bio->jk = $request->jk;
         $bio->jabatan = $request->jabatan;
         $bio->name = $request->nama;
+        $bio->bidang = $request->bidang;
         $bio->update();
 
         return redirect(url('admin/data-master/pegawai/'));

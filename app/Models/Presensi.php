@@ -26,6 +26,11 @@ class Presensi extends Model
         return $this->hasOne(ApelSore::class);
     }
 
+    public function sakit()
+    {
+        return $this->hasOne(Sakit::class);
+    }
+
     public function setelahIshoma()
     {
         return $this->hasOne(SetelahIshoma::class);

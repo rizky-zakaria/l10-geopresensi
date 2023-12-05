@@ -7,10 +7,8 @@
 
 @section('content')
     <div class="card">
-        <form action="{{ route('pegawai.update', $data->id) }}" method="post">
+        <form action="{{ route('pegawai.store') }}" method="post">
             @csrf
-            @method('PUT')
-
             <div class="card-header">
                 Daftar Pegawai
                 <button type="submit" class="btn btn-sm btn-primary float-right"><i class="fa fa-save"></i>
@@ -20,44 +18,31 @@
                 <div class="form-row">
                     <div class="col-6">
                         <label for="nama">Nama</label>
-                        <input type="text" name="nama" id="nama" class="form-control"
-                            value="{{ $data->biodata->name }}">
+                        <input type="text" name="nama" id="nama" class="form-control">
                     </div>
                     <div class="col-6">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="form-control"
-                            value="{{ $data->email }}">
+                        <input type="text" name="email" id="email" class="form-control">
                     </div>
                     <div class="col-6">
                         <label for="password">Password</label>
-                        <input type="text" name="password" id="password" class="form-control" value="">
+                        <input type="text" name="password" id="password" class="form-control">
                     </div>
                     <div class="col-6">
                         <label for="jk">Jenis Kelamin</label>
                         <select name="jk" id="jk" class="form-control">
-                            <option selected value="{{ $data->biodata->jk }}">
-                                {{ $data->biodata->jk = 'L' ? 'Pria' : 'Wanita' }}
-                            </option>
-                            <option selected value="{{ $data->biodata->jk = 'L' ? 'W' : 'L' }}">
-                                {{ $data->biodata->jk = 'L' ? 'Wanita' : 'Pria' }}
-                            </option>
+                            <option selected disabled>Pilih Jenis Kelamin</option>
+                            <option value="L">Pria</option>
+                            <option value="P">Wanita</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="jabatan">Jabatan</label>
-                        <input type="text" name="jabatan" id="jabatan" class="form-control"
-                            value="{{ $data->biodata->jabatan }}">
+                        <input type="text" name="jabatan" id="jabatan" class="form-control">
                     </div>
                     <div class="col">
                         <label for="bidang">Bidang</label>
-                        <select name="bidang" id="bidang" class="form-control">
-                            <option value="{{ $data->bidang }}">{{ $data->bidang }}</option>
-                            @foreach ($bidang as $item)
-                                @if ($item->bidang !== $data->bidang)
-                                    <option value="{{ $item->bidang }}">{{ $item->bidang }}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <input type="text" name="bidang" id="bidang" class="form-control">
                     </div>
                 </div>
             </div>

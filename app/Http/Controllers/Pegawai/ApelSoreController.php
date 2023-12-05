@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApelPagi;
 use App\Models\ApelSore;
 use App\Models\Presensi;
 use App\Models\SetelahIshoma;
@@ -22,7 +23,7 @@ class ApelSoreController extends Controller
 
     public function create()
     {
-        $cek = SetelahIshoma::join('presensis', 'presensis.id', '=', 'setelah_ishomas.presensi_id')
+        $cek = ApelPagi::join('presensis', 'presensis.id', '=', 'apel_pagis.presensi_id')
             ->where('presensis.user_id', Auth::user()->id)
             ->where('presensis.tanggal', date('Y-m-d'))
             ->get();

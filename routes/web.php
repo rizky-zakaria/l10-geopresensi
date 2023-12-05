@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\LokasiController;
 use App\Http\Controllers\Admin\PegawaiController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Pegawai\ApelPagiController;
 use App\Http\Controllers\Pegawai\ApelSoreController;
 use App\Http\Controllers\Pegawai\DalamRuanganController;
+use App\Http\Controllers\Pegawai\SakitController;
 use App\Http\Controllers\Pegawai\SetelahIshomaController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('data-master')->group(function () {
             Route::resource('pegawai', PegawaiController::class);
             Route::resource('lokasi', LokasiController::class);
+            Route::resource('bidang', BidangController::class);
         });
         Route::resource('presensi', LaporanController::class);
         Route::post('presensi/cetak', [LaporanController::class, 'cetakLaporan']);
@@ -57,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('apel-sore/create', [ApelSoreController::class, 'create'])->name('apel-sore.create');
         Route::post('apel-sore/store-lokasi', [ApelSoreController::class, 'postLokasi'])->name('apel-sore.postLokasi');
         Route::get('apel-sore/success', [ApelSoreController::class, 'successPost']);
+
+        Route::resource('sakit', SakitController::class);
     });
 });
 Route::post('apel-pagi/upload-image', [ApelPagiController::class, 'postImage'])->name('apel-pagi.image');

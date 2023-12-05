@@ -40,6 +40,15 @@
                         <label for="jabatan">Jabatan</label>
                         <input type="text" name="jabatan" id="jabatan" class="form-control">
                     </div>
+                    <div class="col">
+                        <label for="bidang">Bidang</label>
+                        <select name="bidang" id="bidang" class="form-control">
+                            <option selected disabled>Pilih Bidang</option>
+                            @foreach ($bidang as $item)
+                                <option value="{{ $item->bidang }}">{{ $item->bidang }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
         </form>

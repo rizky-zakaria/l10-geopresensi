@@ -50,14 +50,8 @@
                     </div>
                     <div class="col">
                         <label for="bidang">Bidang</label>
-                        <select name="bidang" id="bidang" class="form-control">
-                            <option value="{{ $data->bidang }}">{{ $data->bidang }}</option>
-                            @foreach ($bidang as $item)
-                                @if ($item->bidang !== $data->bidang)
-                                    <option value="{{ $item->bidang }}">{{ $item->bidang }}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <input type="text" name="bidang" id="bidang" class="form-control"
+                            value="{{ $data->biodata->bidang }}">
                     </div>
                 </div>
             </div>
