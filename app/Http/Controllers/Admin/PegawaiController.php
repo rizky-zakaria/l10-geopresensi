@@ -36,7 +36,8 @@ class PegawaiController extends Controller
         $data = User::create([
             'email' => $request->email,
             'role' => 'pegawai',
-            'password' => $request->password
+            'password' => $request->password,
+            'name' => $request->nama
         ]);
         Biodata::create([
             'name' => $request->nama,
@@ -74,6 +75,7 @@ class PegawaiController extends Controller
     {
         $data = User::whereId($id)->first();
         $data->email = $request->email;
+        $data->name = $request->nama;
         if (isset($request->password)) {
             $data->passowrd = $request->passowrd;
         }

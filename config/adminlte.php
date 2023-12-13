@@ -331,11 +331,11 @@ return [
             'can'     => 'isPegawai',
             'submenu' => [
                 [
-                    'text' => 'Apel Pagi',
+                    'text' => 'Pagi',
                     'url'  => 'pegawai/apel-pagi',
                 ],
                 [
-                    'text' => 'Apel Sore',
+                    'text' => 'Sore',
                     'url'  => 'pegawai/apel-sore',
                 ],
                 [

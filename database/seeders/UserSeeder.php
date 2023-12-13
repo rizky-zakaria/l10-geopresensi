@@ -18,7 +18,8 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'password' => Hash::make('123'),
             'email' => 'admin@gmail.com',
-            'role' => 'admin'
+            'role' => 'admin',
+            'name' => 'admin'
         ]);
 
         Biodata::create([
@@ -32,7 +33,8 @@ class UserSeeder extends Seeder
         $pegawai = User::create([
             'password' => Hash::make('123'),
             'email' => 'pegawai@gmail.com',
-            'role' => 'pegawai'
+            'role' => 'pegawai',
+            'name' => 'Pegawai',
         ]);
 
         Biodata::create([
