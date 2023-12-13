@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sakits', function (Blueprint $table) {
             $table->id();
             $table->string('keterangan');
-            $table->bigInteger('presensi_id');
+            $table->foreignId('presensi_id')->constrained()->onDelete('cascade');
             $table->string('file');
             $table->string('tanggal');
             $table->timestamps();

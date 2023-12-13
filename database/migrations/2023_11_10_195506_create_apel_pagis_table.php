@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('apel_pagis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('presensi_id');
+            $table->foreignId('presensi_id')->constrained()->onDelete('cascade');
             $table->string('waktu');
             $table->string('path');
             $table->timestamps();

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('tanggal');
             $table->string('keterangan');
             $table->string('periode');
-            $table->bigInteger('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

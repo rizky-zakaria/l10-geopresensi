@@ -8,6 +8,44 @@
 
 @section('content')
     <div class="row">
+        <div class="col-lg-4 col-12">
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>{{ count($users) }}</h3>
+                    <p>Pegawai</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>{{ $jumlahHariKerja }}</h3>
+                    <p>Hari Kerja Perbulan</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-calendar"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>{{ $jumlahHariKerjaTahun }}</h3>
+                    <p>Hari Kerja Pertahun</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-calendar"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="card col-6">
             <div class="card-header">
                 Visi
