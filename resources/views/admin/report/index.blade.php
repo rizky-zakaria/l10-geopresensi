@@ -39,8 +39,8 @@
                     <tr>
                         <th>Tanggal</th>
                         <th>Nama</th>
-                        <th>Apel Pagi</th>
-                        <th>Apel Sore</th>
+                        <th>Pagi</th>
+                        <th>Sore</th>
                         <th>Keterangan</th>
                     </tr>
                 </thead>

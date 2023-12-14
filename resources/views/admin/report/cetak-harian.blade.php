@@ -43,10 +43,10 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    Apel Pagi
+                    Pagi
                 </th>
                 <th colspan="2">
-                    Apel Sore
+                    Sore
                 </th>
             </tr>
             <tr>
