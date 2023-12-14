@@ -37,7 +37,7 @@ class ApelPagiController extends Controller
         // dishub kota = 0.5269178, 123.0562128
         // dishub prov 0.5999216, 123.0712941
         // kampus 4 0.5563289, 123.1317879
-        $distance = getDistance(0.5529103, 123.135272, $request->lat, $request->long);
+        $distance = getDistance(0.5533161666666666, 123.145076, $request->lat, $request->long);
         if ($distance >= 300) {
             Alert::warning('Anda terlalu jauh dari kantor!');
             return redirect()->back();
