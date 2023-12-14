@@ -25,22 +25,24 @@
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
-                        <tr>
-                            <td>
-                                {{-- {{ $loop->iteration }} --}}
-                                {{ $item->presensi->tanggal }}
-                            </td>
-                            <td>
-                                {{ $item->presensi->user->biodata->name }}
-                            </td>
-                            <td>{{ $item->presensi->keterangan }}</td>
-                            <td class="text-center">
-                                <img id="myImage" src="{{ asset($item->path) }}" alt="" width="100px">
-                            </td>
-                            <td>
-                                {{ $item->presensi->keterangan }}
-                            </td>
-                        </tr>
+                        @if (Auth::user()->id === $item->presensi->user_id)
+                            <tr>
+                                <td>
+                                    {{-- {{ $loop->iteration }} --}}
+                                    {{ $item->presensi->tanggal }}
+                                </td>
+                                <td>
+                                    {{ $item->presensi->user->biodata->name }}
+                                </td>
+                                <td>{{ $item->presensi->keterangan }}</td>
+                                <td class="text-center">
+                                    <img id="myImage" src="{{ asset($item->path) }}" alt="" width="100px">
+                                </td>
+                                <td>
+                                    {{ $item->presensi->keterangan }}
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
