@@ -47,7 +47,10 @@
                 <tbody>
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                {{ $item->tanggal }}
+                                {{-- {{ $loop->iteration }} --}}
+                            </td>
                             <td>
                                 {{ $item->user->biodata->name }}
                             </td>
