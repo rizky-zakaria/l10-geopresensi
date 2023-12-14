@@ -18,7 +18,7 @@
                     <tr>
                         <th>Tanggal</th>
                         <th>Nama</th>
-                        <th>Presnsi</th>
+                        <th>Presensi</th>
                         <th>Dokumentasi</th>
                         <th>Keterangan</th>
                     </tr>
@@ -26,7 +26,10 @@
                 <tbody>
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                {{-- {{ $loop->iteration }} --}}
+                                {{ $item->presensi->tanggal }}
+                            </td>
                             <td>
                                 {{ $item->presensi->user->biodata->name }}
                             </td>
