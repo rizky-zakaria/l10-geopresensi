@@ -60,7 +60,7 @@
                                 <option value="izin">Izin</option>
                             </select>
                         </div>
-                        <label for="file">Surat Sakit</label>
+                        <label for="file">Surat</label>
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
