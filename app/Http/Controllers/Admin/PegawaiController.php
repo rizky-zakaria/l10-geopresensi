@@ -78,7 +78,7 @@ class PegawaiController extends Controller
         $data->email = $request->email;
         $data->name = $request->nama;
         if (isset($request->password)) {
-            $data->passowrd = $request->passowrd;
+            $data->password = $request->passowrd;
         }
         $data->update();
 
