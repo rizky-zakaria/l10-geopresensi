@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\ApelPagi;
 use App\Models\ApelSore;
+use App\Models\Bidang;
 use App\Models\DalamRuangan;
 use App\Models\Presensi;
 use App\Models\SetelahIshoma;
@@ -72,6 +73,10 @@ class PresensiSeeder extends Seeder
                 'presensi_id' => $id->id,
                 'waktu' => date('H:i'),
                 'path' => 'uploads/camera_capture_1699726418.png'
+            ]);
+
+            Bidang::create([
+                'bidang' => 'Sarpras'
             ]);
         }
     }

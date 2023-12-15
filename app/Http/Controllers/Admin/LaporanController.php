@@ -79,7 +79,7 @@ class LaporanController extends Controller
                 'JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER'
             ];
             // dd($bulan[$request->waktu]);
-            $bul = $bulans[$request->waktu];
+            $bul = $bulans[$request->waktu - 1];
             $data = User::where('users.role', '!=', 'admin')
                 ->with('presensi', 'biodata')->get();
 
