@@ -74,6 +74,8 @@
                                         S
                                     @elseif($a->apelPagi->waktu === 'izin')
                                         I
+                                    @elseif($a->apelPagi->waktu === '')
+                                        TK
                                     @else
                                         H
                                     @endif
