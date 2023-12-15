@@ -63,16 +63,16 @@ class SakitController extends Controller
                 'waktu' => 'sakit',
                 'path' => '-'
             ]);
-        } else {
+        } elseif ($request->keterangan == 'izin') {
             $presensi = Presensi::create([
-                'keterangan' => 'Sakit',
+                'keterangan' => 'Izin',
                 'tanggal' => date('Y-m-d'),
                 'user_id' => Auth::user()->id,
                 'periode' => date('Y-m')
             ]);
 
             Sakit::create([
-                'keterangan' => 'sakit',
+                'keterangan' => 'izin',
                 'tanggal' => date('Y-m-d'),
                 'file' => $rename,
                 'presensi_id' => $presensi->id,
@@ -88,6 +88,33 @@ class SakitController extends Controller
             ApelSore::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'izin',
+                'path' => '-'
+            ]);
+        } else {
+            $presensi = Presensi::create([
+                'keterangan' => 'Tugas Luar',
+                'tanggal' => date('Y-m-d'),
+                'user_id' => Auth::user()->id,
+                'periode' => date('Y-m')
+            ]);
+
+            Sakit::create([
+                'keterangan' => 'tl',
+                'tanggal' => date('Y-m-d'),
+                'file' => $rename,
+                'presensi_id' => $presensi->id,
+            ]);
+
+
+            ApelPagi::create([
+                'presensi_id' => $presensi->id,
+                'waktu' => 'tl',
+                'path' => '-'
+            ]);
+
+            ApelSore::create([
+                'presensi_id' => $presensi->id,
+                'waktu' => 'tl',
                 'path' => '-'
             ]);
         }
