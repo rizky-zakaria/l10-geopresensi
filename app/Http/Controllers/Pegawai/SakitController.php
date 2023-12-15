@@ -55,13 +55,13 @@ class SakitController extends Controller
             ApelPagi::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'sakit',
-                'path' => '-'
+                'path' => 'uploads/' . $rename
             ]);
 
             ApelSore::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'sakit',
-                'path' => '-'
+                'path' => 'uploads/' . $rename
             ]);
         } elseif ($request->keterangan == 'izin') {
             $presensi = Presensi::create([
@@ -82,13 +82,13 @@ class SakitController extends Controller
             ApelPagi::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'izin',
-                'path' => '-'
+                'path' => 'uploads/' . $rename
             ]);
 
             ApelSore::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'izin',
-                'path' => '-'
+                'path' => 'uploads/' . $rename
             ]);
         } else {
             $presensi = Presensi::create([
@@ -109,13 +109,13 @@ class SakitController extends Controller
             ApelPagi::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'tl',
-                'path' => '-'
+                'path' => 'uploads/' . $rename
             ]);
 
             ApelSore::create([
                 'presensi_id' => $presensi->id,
                 'waktu' => 'tl',
-                'path' => '-'
+                'path' => 'uploads/' . $rename
             ]);
         }
 
