@@ -17,7 +17,7 @@
 <body>
     <div class="text-center " style="width: 100%">
         <span style="font-size: 0.9em">
-            REKAPITULASI KEHADIRAN TENAGA PENUNJANG KEGIATAN DAERAH BULAN NOVEMBER <br>
+            REKAPITULASI KEHADIRAN TENAGA PENUNJANG KEGIATAN DAERAH BULAN {{ $bul }} <br>
             DINAS PERHUBUNGAN KOTA GORONTALO <br>
             TAHUN {{ date('Y') }}
         </span>

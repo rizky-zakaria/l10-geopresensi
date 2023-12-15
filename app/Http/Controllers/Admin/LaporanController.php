@@ -75,6 +75,11 @@ class LaporanController extends Controller
     {
         if ($request->jenis == 'bulanan') {
 
+            $bulans = [
+                'JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER'
+            ];
+            // dd($bulan[$request->waktu]);
+            $bul = $bulans[$request->waktu];
             $data = User::where('users.role', '!=', 'admin')
                 ->with('presensi', 'biodata')->get();
 
@@ -89,7 +94,8 @@ class LaporanController extends Controller
             $pdf = Pdf::loadview('admin.report.cetak-bulanan', [
                 'data' => $data,
                 'days' => $days,
-                'bulan' => $bulan
+                'bulan' => $bulan,
+                'bul' => $bul
             ])->setPaper('A4', 'landscape');
             return $pdf->stream();
         } else {
