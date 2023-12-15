@@ -21,20 +21,20 @@
                     <div class="col-6">
                         <label for="nama">Nama</label>
                         <input type="text" name="nama" id="nama" class="form-control"
-                            value="{{ $data->biodata->name }}">
+                            value="{{ $data->biodata->name }}" required>
                     </div>
                     <div class="col-6">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="form-control"
-                            value="{{ $data->email }}">
+                        <input type="text" name="email" id="email" class="form-control" value="{{ $data->email }}"
+                            required>
                     </div>
                     <div class="col-6">
                         <label for="password">Password</label>
-                        <input type="text" name="password" id="password" class="form-control" value="">
+                        <input type="text" name="password" id="password" class="form-control" value="" required>
                     </div>
                     <div class="col-6">
                         <label for="jk">Jenis Kelamin</label>
-                        <select name="jk" id="jk" class="form-control">
+                        <select name="jk" id="jk" class="form-control" required>
                             <option selected value="{{ $data->biodata->jk }}">
                                 {{ $data->biodata->jk = 'L' ? 'Pria' : 'Wanita' }}
                             </option>
@@ -46,11 +46,11 @@
                     <div class="col">
                         <label for="jabatan">Jabatan</label>
                         <input type="text" name="jabatan" id="jabatan" class="form-control"
-                            value="{{ $data->biodata->jabatan }}">
+                            value="{{ $data->biodata->jabatan }}" required>
                     </div>
                     <div class="col">
                         <label for="bidang">Bidang</label>
-                        <select name="bidang" id="bidang" class="form-control">
+                        <select name="bidang" id="bidang" class="form-control" required>
                             <option value="{{ $data->bidang }}">{{ $data->bidang }}</option>
                             @foreach ($bidang as $item)
                                 @if ($item->bidang !== $data->bidang)

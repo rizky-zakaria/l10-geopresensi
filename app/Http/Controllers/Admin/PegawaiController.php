@@ -73,6 +73,7 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $data = User::whereId($id)->first();
         $data->email = $request->email;
         $data->name = $request->nama;
