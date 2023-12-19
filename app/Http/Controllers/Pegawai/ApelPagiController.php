@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
 use App\Models\ApelPagi;
+use App\Models\ApelSore;
 use App\Models\Presensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -73,5 +75,45 @@ class ApelPagiController extends Controller
     {
         Alert::success('Berhasil melakukan presensi');
         return redirect(url('pegawai/apel-pagi'));
+    }
+
+    public function tugasLuar(Request $request)
+    {
+        $data = ApelPagi::join('presensis', 'presensis.id', '=', 'apel_pagis.presensi_id')
+            ->where('presensis.user_id', Auth::user()->id)->where('presensis.tanggal', date('Y-m-d'))
+            ->get();
+        if (count($data) > 0) {
+            Alert::error('Anda telah melakukan presensi');
+            return redirect(url('pegawai/apel-pagi'));
+        }
+
+        $uploadPath = public_path('uploads');
+        if (!File::isDirectory($uploadPath)) {
+            File::makeDirectory($uploadPath, 0755, true, true);
+        }
+
+        $rename = '';
+
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $rename = 'file' . date('YmdHis') . '.' . $extension;
+            $file->move($uploadPath, $rename);
+        }
+
+        $presensi = Presensi::create([
+            'keterangan' => 'Tugas Luar',
+            'tanggal' => date('Y-m-d'),
+            'user_id' => Auth::user()->id,
+            'periode' => date('Y-m')
+        ]);
+
+        ApelPagi::create([
+            'presensi_id' => $presensi->id,
+            'waktu' => 'tl',
+            'path' => 'uploads/' . $rename
+        ]);
+
+        return redirect()->back();
     }
 }

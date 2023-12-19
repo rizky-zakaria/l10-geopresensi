@@ -11,6 +11,10 @@
             Data Presensi
             <a href="{{ route('apel-pagi.create') }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-camera"></i>
                 Presensi Sekarang</a>
+            <button type="button" class="btn btn-warning btn-sm float-right mr-1" data-toggle="modal"
+                data-target="#exampleModal">
+                Tidak Hadir
+            </button>
         </div>
         <div class="card-body">
             <table id="example2" class="table table-bordered table-hover">
@@ -36,7 +40,11 @@
                                 </td>
                                 <td>{{ $item->presensi->keterangan }}</td>
                                 <td class="text-center">
-                                    <img id="myImage" src="{{ asset($item->path) }}" alt="" width="100px">
+                                    @if ($item->waktu === 'tl')
+                                        Tugas Luar
+                                    @else
+                                        <img id="myImage" src="{{ asset($item->path) }}" alt="" width="100px">
+                                    @endif
                                 </td>
                                 <td>
                                     {{ $item->presensi->keterangan }}
@@ -50,6 +58,43 @@
     </div>
     <div id="previewOverlay" style="display:none;">
         <img id="previewImage" src="" alt="Preview">
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('apel-pagi.tugas-luar') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="keterangan">Keterangan</label>
+                            <select name="keterangan" id="keterangan" class="form-control">
+                                {{-- <option selected disabled>Pilih Keterangan</option> --}}
+                                <option value="tl" selected>Tugas Luar</option>
+                            </select>
+                        </div>
+                        <label for="file">Surat</label>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input type="file" name="file" id="file">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @stop
 

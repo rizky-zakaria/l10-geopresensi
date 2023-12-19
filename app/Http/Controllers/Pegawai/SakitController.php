@@ -91,34 +91,8 @@ class SakitController extends Controller
                 'path' => 'uploads/' . $rename
             ]);
         } else {
-            $presensi = Presensi::create([
-                'keterangan' => 'Tugas Luar',
-                'tanggal' => date('Y-m-d'),
-                'user_id' => Auth::user()->id,
-                'periode' => date('Y-m')
-            ]);
-
-            Sakit::create([
-                'keterangan' => 'tl',
-                'tanggal' => date('Y-m-d'),
-                'file' => $rename,
-                'presensi_id' => $presensi->id,
-            ]);
-
-
-            ApelPagi::create([
-                'presensi_id' => $presensi->id,
-                'waktu' => 'tl',
-                'path' => 'uploads/' . $rename
-            ]);
-
-            ApelSore::create([
-                'presensi_id' => $presensi->id,
-                'waktu' => 'tl',
-                'path' => 'uploads/' . $rename
-            ]);
+            return redirect()->back();
         }
-
         return redirect()->back();
     }
 

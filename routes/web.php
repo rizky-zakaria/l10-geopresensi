@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('apel-pagi/create', [ApelPagiController::class, 'create'])->name('apel-pagi.create');
         Route::post('apel-pagi/store-lokasi', [ApelPagiController::class, 'postLokasi'])->name('apel-pagi.postLokasi');
         Route::get('apel-pagi/success', [ApelPagiController::class, 'successPost']);
+        Route::post('apel-pagi/tugas-luar', [ApelPagiController::class, 'tugasLuar'])->name('apel-pagi.tugas-luar');
 
         Route::get('dalam-ruangan', [DalamRuanganController::class, 'index']);
         Route::get('dalam-ruangan/create', [DalamRuanganController::class, 'create'])->name('dalam-ruangan.create');
@@ -60,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('apel-sore/create', [ApelSoreController::class, 'create'])->name('apel-sore.create');
         Route::post('apel-sore/store-lokasi', [ApelSoreController::class, 'postLokasi'])->name('apel-sore.postLokasi');
         Route::get('apel-sore/success', [ApelSoreController::class, 'successPost']);
+        Route::post('apel-sore/tugas-luar', [ApelSoreController::class, 'tugasLuar'])->name('apel-sore.tugas-luar');
 
         Route::resource('sakit', SakitController::class);
     });

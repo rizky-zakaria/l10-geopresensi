@@ -58,7 +58,7 @@
                                 <option selected disabled>Pilih Keterangan</option>
                                 <option value="sakit">Sakit</option>
                                 <option value="izin">Izin</option>
-                                <option value="tl">Tugas Luar</option>
+                                {{-- <option value="tl">Tugas Luar</option> --}}
                             </select>
                         </div>
                         <label for="file">Surat</label>
