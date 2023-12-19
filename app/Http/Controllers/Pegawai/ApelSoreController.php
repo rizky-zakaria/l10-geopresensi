@@ -110,12 +110,14 @@ class ApelSoreController extends Controller
             $file->move($uploadPath, $rename);
         }
 
-        $presensi = Presensi::create([
-            'keterangan' => 'Tugas Luar',
-            'tanggal' => date('Y-m-d'),
-            'user_id' => Auth::user()->id,
-            'periode' => date('Y-m')
-        ]);
+        $presensi = Presensi::where('user_id', Auth::user()->id)->where('tanggal', date('Y-m-d'))->first();
+
+        // $presensi = Presensi::create([
+        //     'keterangan' => 'Tugas Luar',
+        //     'tanggal' => date('Y-m-d'),
+        //     'user_id' => Auth::user()->id,
+        //     'periode' => date('Y-m')
+        // ]);
 
         ApelSore::create([
             'presensi_id' => $presensi->id,
