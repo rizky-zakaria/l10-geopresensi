@@ -57,6 +57,8 @@
                             <td class="text-center">
                                 @if ($item->apelPagi->waktu === '-')
                                     -
+                                @elseif($item->apelSore->waktu === 'tl')
+                                    Tugas Luar
                                 @else
                                     @isset($item->apelPagi->waktu)
                                         <img src="{{ asset($item->apelPagi->path) }}" alt="" width="100px">
@@ -67,6 +69,8 @@
                             <td class="text-center">
                                 @if ($item->apelSore->waktu === '-')
                                     -
+                                @elseif($item->apelSore->waktu === 'tl')
+                                    Tugas Luar
                                 @else
                                     @isset($item->apelSore->waktu)
                                         <img src="{{ asset($item->apelSore->path) }}" alt="" width="100px">
