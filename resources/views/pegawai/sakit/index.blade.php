@@ -61,7 +61,7 @@
                                 {{-- <option value="tl">Tugas Luar</option> --}}
                             </select>
                         </div>
-                        <label for="file">Surat</label>
+                        <label for="file">Dokumentasi</label>
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">

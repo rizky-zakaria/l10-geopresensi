@@ -13,7 +13,7 @@
                 Presensi Sekarang</a>
             <button type="button" class="btn btn-warning btn-sm float-right mr-1" data-toggle="modal"
                 data-target="#exampleModal">
-                Tidak Hadir
+                Tugas Luar
             </button>
         </div>
         <div class="card-body">
