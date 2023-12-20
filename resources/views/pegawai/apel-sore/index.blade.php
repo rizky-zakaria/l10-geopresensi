@@ -41,7 +41,7 @@
                                 <td>{{ $item->presensi->keterangan }}</td>
                                 <td class="text-center">
                                     @if ($item->waktu === 'tl')
-                                        Tugas Luar
+                                        <a href="{{ asset($item->path) }}">Tugas Luar</a>
                                     @else
                                         <img id="myImage" src="{{ asset($item->path) }}" alt="" width="100px">
                                     @endif
