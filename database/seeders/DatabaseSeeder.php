@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         // $this->call(UserSeeder::class);
         // $this->call(PresensiSeeder::class);
-        // $this->call(KoordinatSeeder::class);
+        $this->call(KoordinatSeeder::class);
     }
 }
