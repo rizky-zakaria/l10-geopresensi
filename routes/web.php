@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\LokasiController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KoordinatController;
 use App\Http\Controllers\Pegawai\ApelPagiController;
 use App\Http\Controllers\Pegawai\ApelSoreController;
 use App\Http\Controllers\Pegawai\DalamRuanganController;
@@ -70,3 +71,5 @@ Route::post('apel-pagi/upload-image', [ApelPagiController::class, 'postImage'])-
 Route::post('dalam-ruangan/upload-image', [DalamRuanganController::class, 'postImage'])->name('dalam-ruangan.image');
 Route::post('setelah-ishoma/upload-image', [SetelahIshomaController::class, 'postImage'])->name('setelah-ishoma.image');
 Route::post('apel-sore/upload-image', [ApelSoreController::class, 'postImage'])->name('apel-sore.image');
+
+Route::get('ubah-lokasi/{latitude}/{longitude}', [KoordinatController::class, 'index']);
