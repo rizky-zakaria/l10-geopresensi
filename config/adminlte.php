@@ -313,10 +313,10 @@ return [
                     'text' => 'Data Bidang',
                     'url'  => 'admin/data-master/bidang',
                 ],
-                [
-                    'text' => 'Data Lokasi',
-                    'url'  => 'admin/data-master/lokasi',
-                ],
+                // [
+                //     'text' => 'Data Lokasi',
+                //     'url'  => 'admin/data-master/lokasi',
+                // ],
             ],
         ],
         [
