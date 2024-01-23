@@ -60,7 +60,7 @@ class ApelPagiController extends Controller
         $image = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image));
         file_put_contents($path, $image);
         $presensi = Presensi::create([
-            'keterangan' => '-',
+            'keterangan' => 'Hadir',
             'tanggal' => date('Y-m-d'),
             'user_id' => Auth::user()->id,
             'periode' => date('Y-m')

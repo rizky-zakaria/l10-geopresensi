@@ -10,6 +10,7 @@ use App\Models\Sakit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SakitController extends Controller
 {
@@ -21,6 +22,14 @@ class SakitController extends Controller
 
     public function store(Request $request)
     {
+
+        $data = ApelPagi::join('presensis', 'presensis.id', '=', 'apel_pagis.presensi_id')
+            ->where('presensis.user_id', Auth::user()->id)->where('presensis.tanggal', date('Y-m-d'))
+            ->get();
+        if (count($data) > 0) {
+            Alert::error('Anda telah melakukan presensi');
+            return redirect(url('pegawai/sakit'));
+        }
 
         $uploadPath = public_path('uploads');
         if (!File::isDirectory($uploadPath)) {

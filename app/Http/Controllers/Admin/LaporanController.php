@@ -82,8 +82,6 @@ class LaporanController extends Controller
             $bul = $bulans[$request->waktu - 1];
             $data = User::where('users.role', '!=', 'admin')
                 ->with('presensi', 'biodata')->get();
-
-
             if (count($data) < 1) {
                 Alert::error('Data tidak ditemukan');
                 return redirect()->back();

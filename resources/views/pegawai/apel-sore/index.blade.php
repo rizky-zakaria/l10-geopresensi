@@ -38,7 +38,17 @@
                                 <td>
                                     {{ $item->presensi->user->biodata->name }}
                                 </td>
-                                <td>{{ $item->presensi->keterangan }}</td>
+                                <td>
+                                    @if ($item->waktu == 'tl')
+                                        Tugas Luar
+                                    @elseif($item->waktu == 'sakit')
+                                        Sakit
+                                    @elseif($item->waktu == 'izin')
+                                        Izin
+                                    @else
+                                        {{ $item->waktu }}
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     @if ($item->waktu === 'tl')
                                         <a href="{{ asset($item->path) }}">Tugas Luar</a>
@@ -47,7 +57,15 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $item->presensi->keterangan }}
+                                    @if ($item->waktu == 'tl')
+                                        Tugas Luar
+                                    @elseif($item->waktu == 'sakit')
+                                        Sakit
+                                    @elseif($item->waktu == 'izin')
+                                        Izin
+                                    @else
+                                        Hadir
+                                    @endif
                                 </td>
                             </tr>
                         @endif

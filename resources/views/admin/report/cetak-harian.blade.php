@@ -83,7 +83,11 @@
                         @elseif($item->apelPagi->waktu === 'izin')
                             I
                         @else
-                            H
+                            @if ($item->apelPagi->waktu === 'tl')
+                                TL
+                            @else
+                                H
+                            @endif
                         @endif
                     </td>
                     <td>
@@ -97,7 +101,11 @@
                         @elseif($item->apelSore->waktu === 'izin')
                             I
                         @else
-                            H
+                            @if ($item->apelSore->waktu === 'tl')
+                                TL
+                            @else
+                                H
+                            @endif
                         @endif
                     </td>
                     <td>
@@ -106,7 +114,19 @@
                         @elseif($item->apelPagi->waktu === 'izin')
                             Izin
                         @else
-                            Hadir
+                            @if ($item->apelPagi->waktu === 'tl')
+                                @if ($item->apelSore->waktu === 'tl')
+                                    TL
+                                @else
+                                    TL - Hadir
+                                @endif
+                            @else
+                                @if ($item->apelSore->waktu === 'tl')
+                                    Hadir - TL
+                                @else
+                                    Hadir
+                                @endif
+                            @endif
                         @endif
                     </td>
                 </tr>

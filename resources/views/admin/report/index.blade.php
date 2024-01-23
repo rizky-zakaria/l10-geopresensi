@@ -55,10 +55,12 @@
                                 {{ $item->user->biodata->name }}
                             </td>
                             <td class="text-center">
-                                @if ($item->apelPagi->waktu === '-')
-                                    -
-                                @elseif($item->apelSore->waktu === 'tl')
+                                @if ($item->apelPagi->waktu === 'tl')
                                     Tugas Luar
+                                @elseif($item->apelPagi->waktu === 'sakit')
+                                    Sakit
+                                @elseif($item->apelPagi->waktu === 'izin')
+                                    Izin
                                 @else
                                     @isset($item->apelPagi->waktu)
                                         <img src="{{ asset($item->apelPagi->path) }}" alt="" width="100px">
@@ -67,10 +69,12 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if ($item->apelSore->waktu === '-')
-                                    -
-                                @elseif($item->apelSore->waktu === 'tl')
+                                @if ($item->apelSore->waktu === 'tl')
                                     Tugas Luar
+                                @elseif($item->apelSore->waktu === 'izin')
+                                    Izin
+                                @elseif($item->apelSore->waktu === 'sakit')
+                                    Sakit
                                 @else
                                     @isset($item->apelSore->waktu)
                                         <img src="{{ asset($item->apelSore->path) }}" alt="" width="100px">
@@ -84,10 +88,20 @@
                                         Sakit
                                     @elseif($item->apelPagi->waktu === 'izin')
                                         Izin
-                                    @elseif($item->apelPagi->waktu && $item->apelSore->waktu)
-                                        Hadir
                                     @else
-                                        Bolos
+                                        @if ($item->apelPagi->waktu === 'tl')
+                                            @if ($item->apelSore->waktu === 'tl')
+                                                Tugas Luar
+                                            @else
+                                                Tugas Luar - Hadir
+                                            @endif
+                                        @else
+                                            @if ($item->apelSore->waktu === 'tl')
+                                                Hadir - Tugas Luar
+                                            @else
+                                                Hadir
+                                            @endif
+                                        @endif
                                     @endif
                                 @endisset
                             </td>
